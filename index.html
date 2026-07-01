@@ -19,9 +19,18 @@ html{
     scroll-behavior:smooth;
 }
 
+/* ✅ FIX: GLOBAL BACKGROUND (THIS SOLVES WHITE SCREEN) */
 body{
     color:#fff;
     overflow-x:hidden;
+
+    background:
+        linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.65)),
+        url("dOk3erq3R4FLcv01RbGT9ED2-MVTfRAALUAZUO0WE95SwjrVXV1-OsDEqVJeDvKFqN5e6eNK5th2U4P36Q4kNdOv7oxB-OgVUVliPf4xei6qPq3izRfKbn_BkpghzHH3F9zsr_RETIrdF8yKX2EAWyuv0Jd2CHIf0q7l_unareglG9rzp45j2z5CNyMySWBb.jpeg");
+
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
 }
 
 /* NAV */
@@ -61,7 +70,7 @@ nav a:hover{
     color:#ffd54f;
 }
 
-/* HERO */
+/* HERO (NO SEPARATE BACKGROUND) */
 .hero{
     height:100vh;
     display:flex;
@@ -69,23 +78,6 @@ nav a:hover{
     justify-content:center;
     text-align:center;
     position:relative;
-}
-
-/* FULL BACKGROUND */
-.hero::before{
-    content:"";
-    position:absolute;
-    inset:0;
-
-    background:
-        linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.65)),
-        url("dOk3erq3R4FLcv01RbGT9ED2-MVTfRAALUAZUO0WE95SwjrVXV1-OsDEqVJeDvKFqN5e6eNK5th2U4P36Q4kNdOv7oxB-OgVUVliPf4xei6qPq3izRfKbn_BkpghzHH3F9zsr_RETIrdF8yKX2EAWyuv0Jd2CHIf0q7l_unareglG9rzp45j2z5CNyMySWBb.jpeg");
-
-    background-size:cover;
-    background-position:center;
-    background-attachment:fixed;
-
-    z-index:-1;
 }
 
 .hero > div{
@@ -120,7 +112,7 @@ nav a:hover{
     transform:translateY(-4px);
 }
 
-/* SECTIONS (NO BLOCKING BACKGROUND) */
+/* SECTIONS */
 section{
     padding:90px 8%;
     background:transparent;
@@ -196,7 +188,7 @@ footer{
     text-align:center;
     padding:30px;
     color:#aaa;
-    background:rgba(0,0,0,0.4);
+    background:rgba(0,0,0,0.35);
     backdrop-filter:blur(10px);
 }
 </style>
