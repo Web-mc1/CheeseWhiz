@@ -71,7 +71,6 @@ nav a:hover{
         url("dOk3erq3R4FLcv01RbGT9ED2-MVTfRAALUAZUO0WE95SwjrVXV1-OsDEqVJeDvKFqN5e6eNK5th2U4P36Q4kNdOv7oxB-OgVUVliPf4xei6qPq3izRfKbn_BkpghzHH3F9zsr_RETIrdF8yKX2EAWyuv0Jd2CHIf0q7l_unareglG9rzp45j2z5CNyMySWBb.jpeg");
     background-size:cover;
     background-position:center;
-    background-repeat:no-repeat;
 }
 
 .hero h1{
@@ -149,6 +148,16 @@ h2{
     margin-top:15px;
 }
 
+.status-online{
+    color:#4CAF50;
+    font-weight:700;
+}
+
+.status-offline{
+    color:#ff4d4d;
+    font-weight:700;
+}
+
 footer{
     background:#0a0c10;
     text-align:center;
@@ -181,7 +190,7 @@ footer{
 <section id="about">
 <h2>About</h2>
 <p style="max-width:900px;margin:auto;text-align:center;">
-Welcome to CheeseWhiz SMP, a community-driven Minecraft survival server where players can build, explore, trade, create kingdoms, and enjoy exciting events.
+Welcome to CheeseWhiz SMP, a community-driven Minecraft survival server with events, building, exploration, and a friendly community.
 </p>
 </section>
 
@@ -192,22 +201,22 @@ Welcome to CheeseWhiz SMP, a community-driven Minecraft survival server where pl
 
 <div class="card">
 <h3>Survival</h3>
-<p>Vanilla gameplay with quality-of-life improvements.</p>
+<p>Enhanced vanilla survival experience.</p>
 </div>
 
 <div class="card">
 <h3>Events</h3>
-<p>Frequent events with awesome rewards.</p>
+<p>Fun server events with challenges and rewards.</p>
 </div>
 
 <div class="card">
-<h3>Economy</h3>
-<p>Trade and build your wealth.</p>
+<h3>Cross-Platform</h3>
+<p>Join from Java & Bedrock Edition.</p>
 </div>
 
 <div class="card">
 <h3>Community</h3>
-<p>Friendly players and active staff.</p>
+<p>Active and friendly player base.</p>
 </div>
 
 </div>
@@ -215,7 +224,7 @@ Welcome to CheeseWhiz SMP, a community-driven Minecraft survival server where pl
 
 <section id="join">
 
-<h2>Join Now</h2>
+<h2>Join The Server</h2>
 
 <div class="server-box">
 
@@ -225,8 +234,16 @@ Welcome to CheeseWhiz SMP, a community-driven Minecraft survival server where pl
 147.135.6.160:25785
 </div>
 
-<p style="margin-top:20px;">
-Java & Bedrock • 1.21.11 + join on any version
+<p style="margin-top:15px;">
+Version: 1.21.11+ • Join on any version
+</p>
+
+<p style="margin-top:10px;">
+Status: <span id="status">Loading...</span>
+</p>
+
+<p>
+Players: <span id="players">Loading...</span>
 </p>
 
 <a class="btn" href="https://discord.gg/Hv4NvYDN3x" target="_blank">
@@ -240,6 +257,36 @@ Join Discord
 <footer>
 © 2026 CheeseWhiz SMP • All Rights Reserved
 </footer>
+
+<script>
+async function loadServerStatus(){
+    try{
+        const res = await fetch("https://api.mcstatus.io/v2/status/java/147.135.6.160:25785");
+        const data = await res.json();
+
+        const statusEl = document.getElementById("status");
+        const playersEl = document.getElementById("players");
+
+        if(data.online){
+            statusEl.textContent = "Online";
+            statusEl.className = "status-online";
+
+            playersEl.textContent = `${data.players.online} / ${data.players.max}`;
+        } else {
+            statusEl.textContent = "Offline";
+            statusEl.className = "status-offline";
+
+            playersEl.textContent = "0 / 0";
+        }
+    } catch (e){
+        document.getElementById("status").textContent = "Error";
+        document.getElementById("players").textContent = "-";
+    }
+}
+
+loadServerStatus();
+setInterval(loadServerStatus, 30000);
+</script>
 
 </body>
 </html>
