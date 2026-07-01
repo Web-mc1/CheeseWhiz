@@ -20,7 +20,6 @@ html{
 }
 
 body{
-    background:#0f1117;
     color:#fff;
     overflow-x:hidden;
 }
@@ -31,12 +30,13 @@ nav{
     justify-content:space-between;
     align-items:center;
     padding:20px 8%;
-    background:rgba(0,0,0,.4);
-    backdrop-filter:blur(12px);
     position:fixed;
     width:100%;
     top:0;
     z-index:1000;
+
+    background:rgba(0,0,0,0.35);
+    backdrop-filter:blur(10px);
 }
 
 .logo{
@@ -61,7 +61,7 @@ nav a:hover{
     color:#ffd54f;
 }
 
-/* HERO FIXED BACKGROUND (NO BLUR, NO MOVE) */
+/* HERO */
 .hero{
     height:100vh;
     display:flex;
@@ -69,29 +69,25 @@ nav a:hover{
     justify-content:center;
     text-align:center;
     position:relative;
-    overflow:hidden;
 }
 
-/* background layer */
+/* FULL BACKGROUND */
 .hero::before{
     content:"";
     position:absolute;
     inset:0;
 
     background:
-        linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.75)),
+        linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.65)),
         url("dOk3erq3R4FLcv01RbGT9ED2-MVTfRAALUAZUO0WE95SwjrVXV1-OsDEqVJeDvKFqN5e6eNK5th2U4P36Q4kNdOv7oxB-OgVUVliPf4xei6qPq3izRfKbn_BkpghzHH3F9zsr_RETIrdF8yKX2EAWyuv0Jd2CHIf0q7l_unareglG9rzp45j2z5CNyMySWBb.jpeg");
 
     background-size:cover;
     background-position:center;
-    background-repeat:no-repeat;
-
     background-attachment:fixed;
 
     z-index:-1;
 }
 
-/* hero text */
 .hero > div{
     position:relative;
     z-index:1;
@@ -124,11 +120,26 @@ nav a:hover{
     transform:translateY(-4px);
 }
 
-/* SECTIONS */
+/* SECTIONS (NO BLOCKING BACKGROUND) */
 section{
     padding:90px 8%;
+    background:transparent;
 }
 
+/* GLASS BOX STYLE */
+.card,
+.server-box{
+    background:rgba(0,0,0,0.55);
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:15px;
+
+    padding:30px;
+}
+
+/* TITLES */
 h2{
     text-align:center;
     font-size:3rem;
@@ -144,9 +155,6 @@ h2{
 }
 
 .card{
-    background:#181c24;
-    padding:30px;
-    border-radius:15px;
     transition:.3s;
 }
 
@@ -159,16 +167,7 @@ h2{
     margin-bottom:15px;
 }
 
-/* SERVER BOX */
-.server-box{
-    background:#181c24;
-    padding:30px;
-    border-radius:15px;
-    max-width:600px;
-    margin:auto;
-    text-align:center;
-}
-
+/* SERVER INFO */
 .ip{
     font-size:1.5rem;
     color:#ffd54f;
@@ -194,10 +193,11 @@ h2{
 
 /* FOOTER */
 footer{
-    background:#0a0c10;
     text-align:center;
     padding:30px;
-    color:#888;
+    color:#aaa;
+    background:rgba(0,0,0,0.4);
+    backdrop-filter:blur(10px);
 }
 </style>
 </head>
@@ -227,9 +227,9 @@ footer{
 <!-- ABOUT -->
 <section id="about">
 <h2>About</h2>
-<p style="max-width:900px;margin:auto;text-align:center;">
+<div class="server-box">
 A survival Minecraft server with events, building, exploration, and a friendly community.
-</p>
+</div>
 </section>
 
 <!-- FEATURES -->
@@ -249,8 +249,8 @@ A survival Minecraft server with events, building, exploration, and a friendly c
 </div>
 
 <div class="card">
-<h3>Cross-Platform</h3>
-<p>Java & Bedrock support.</p>
+<h3>Java & Bedrock</h3>
+<p>Play from any platform.</p>
 </div>
 
 <div class="card">
@@ -268,7 +268,6 @@ A survival Minecraft server with events, building, exploration, and a friendly c
 <div class="server-box">
 
 <h3>Server IP</h3>
-
 <div class="ip">147.135.6.160:25785</div>
 
 <p style="margin-top:15px;">
@@ -287,7 +286,6 @@ Players: <span id="playerCount">Loading...</span>
 <div id="playerList">Loading...</div>
 
 </div>
-
 </section>
 
 <!-- JOIN -->
@@ -295,7 +293,7 @@ Players: <span id="playerCount">Loading...</span>
 <h2>Join</h2>
 
 <div class="server-box">
-<p>Click below to join Discord</p>
+<p>Join our Discord community</p>
 
 <a class="btn" href="https://discord.gg/Hv4NvYDN3x" target="_blank">
 Join Discord
