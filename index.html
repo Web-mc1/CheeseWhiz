@@ -3,193 +3,339 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CheeseWhiz SMP</title>
+<title>CheeseWhiz SMP | Official Minecraft Server</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
+/* ==================== ROOT VARIABLES ==================== */
+:root {
+    --primary: #ffd54f;
+    --primary-glow: rgba(255, 213, 79, 0.35);
+    --primary-hover: #ffe082;
+    --bg-dark: #0a0c10;
+    --glass-bg: rgba(18, 20, 29, 0.65);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-hover-border: rgba(255, 213, 79, 0.4);
+    --text-main: #f3f4f6;
+    --text-muted: #9ca3af;
+    --online-color: #4ade80;
+    --offline-color: #f87171;
+}
+
+/* ==================== BASE STYLES ==================== */
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
 html{
-    scroll-behavior:smooth;
+    scroll-behavior: smooth;
 }
 
-/* ✅ GLOBAL BACKGROUND */
 body{
-    color:#fff;
-    overflow-x:hidden;
-
-    background:
-        linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.65)),
+    color: var(--text-main);
+    background-color: var(--bg-dark);
+    overflow-x: hidden;
+    background: 
+        radial-gradient(circle at 50% 0%, rgba(255, 213, 79, 0.15), transparent 50%),
+        linear-gradient(rgba(10, 12, 16, 0.75), rgba(10, 12, 16, 0.85)),
         url("dOk3erq3R4FLcv01RbGT9ED2-MVTfRAALUAZUO0WE95SwjrVXV1-OsDEqVJeDvKFqN5e6eNK5th2U4P36Q4kNdOv7oxB-OgVUVliPf4xei6qPq3izRfKbn_BkpghzHH3F9zsr_RETIrdF8yKX2EAWyuv0Jd2CHIf0q7l_unareglG9rzp45j2z5CNyMySWBb.jpeg");
-
-    background-size:cover;
-    background-position:center;
-    background-attachment:fixed;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    line-height: 1.6;
 }
 
-/* NAV */
+/* ==================== NAVIGATION ==================== */
 nav{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:20px 8%;
-    position:fixed;
-    width:100%;
-    top:0;
-    z-index:1000;
-
-    background:rgba(0,0,0,0.35);
-    backdrop-filter:blur(10px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 8%;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    background: rgba(10, 12, 16, 0.6);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--glass-border);
 }
 
 .logo{
-    font-size:28px;
-    font-weight:700;
-    color:#ffd54f;
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--primary);
+    text-shadow: 0 0 20px var(--primary-glow);
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 nav ul{
-    display:flex;
-    gap:30px;
-    list-style:none;
+    display: flex;
+    gap: 32px;
+    list-style: none;
 }
 
 nav a{
-    color:white;
-    text-decoration:none;
-    transition:.3s;
+    color: var(--text-main);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
 }
 
 nav a:hover{
-    color:#ffd54f;
+    color: var(--primary);
+    text-shadow: 0 0 10px var(--primary-glow);
 }
 
-/* HERO */
-.hero{
-    height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    position:relative;
-}
-
-.hero > div{
-    position:relative;
-    z-index:1;
-}
-
-.hero h1{
-    font-size:5rem;
-    color:#ffd54f;
-}
-
-.hero p{
-    margin-top:15px;
-    font-size:1.3rem;
-    color:#ddd;
-}
-
+/* ==================== BUTTONS ==================== */
 .btn{
-    display:inline-block;
-    margin-top:30px;
-    padding:15px 35px;
-    background:#ffd54f;
-    color:#111;
-    text-decoration:none;
-    border-radius:10px;
-    font-weight:600;
-    transition:.3s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 32px;
+    background: var(--primary);
+    color: #000;
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 20px var(--primary-glow);
+    border: none;
+    cursor: pointer;
 }
 
 .btn:hover{
-    transform:translateY(-4px);
+    transform: translateY(-3px);
+    background: var(--primary-hover);
+    box-shadow: 0 8px 30px rgba(255, 213, 79, 0.5);
 }
 
-/* SECTIONS */
+/* ==================== HERO SECTION ==================== */
+.hero{
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.hero-content{
+    max-width: 800px;
+}
+
+.hero h1{
+    font-size: clamp(3rem, 8vw, 5.5rem);
+    font-weight: 800;
+    letter-spacing: -2px;
+    background: linear-gradient(135deg, #ffffff 30%, var(--primary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.hero p{
+    font-size: 1.25rem;
+    color: var(--text-muted);
+    margin-bottom: 35px;
+    font-weight: 400;
+}
+
+/* ==================== SECTIONS & GLASS BOXES ==================== */
 section{
-    padding:90px 8%;
-    background:transparent;
+    padding: 100px 8%;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-/* GLASS BOX STYLE */
-.card,
-.server-box{
-    background:rgba(0,0,0,0.55);
-    backdrop-filter:blur(10px);
-    -webkit-backdrop-filter:blur(10px);
-
-    border:1px solid rgba(255,255,255,0.08);
-    border-radius:15px;
-
-    padding:30px;
-}
-
-/* TITLES */
 h2{
-    text-align:center;
-    font-size:3rem;
-    margin-bottom:40px;
-    color:#ffd54f;
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 50px;
+    color: var(--text-main);
+    letter-spacing: -1px;
 }
 
-/* CARDS */
+h2 span{
+    color: var(--primary);
+}
+
+.glass-card{
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease;
+}
+
+/* ==================== CARDS GRID ==================== */
 .cards{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:25px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
 }
 
 .card{
-    transition:.3s;
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 30px;
+    transition: all 0.3s ease;
 }
 
 .card:hover{
-    transform:translateY(-10px);
+    transform: translateY(-8px);
+    border-color: var(--glass-hover-border);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.5);
 }
 
 .card h3{
-    color:#ffd54f;
-    margin-bottom:15px;
+    color: var(--primary);
+    font-size: 1.3rem;
+    margin-bottom: 10px;
 }
 
-/* SERVER INFO */
+.card p{
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+/* ==================== SERVER STATUS ==================== */
+.server-box{
+    text-align: center;
+}
+
+.ip-container{
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 14px 28px;
+    border-radius: 12px;
+    border: 1px dashed rgba(255, 213, 79, 0.3);
+    margin: 20px 0;
+}
+
 .ip{
-    font-size:1.5rem;
-    color:#ffd54f;
-    margin-top:15px;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--primary);
+    letter-spacing: 0.5px;
 }
 
-.status-online{
-    color:#4CAF50;
-    font-weight:700;
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.05);
 }
 
-.status-offline{
-    color:#ff4d4d;
-    font-weight:700;
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
 }
 
-#playerList{
-    margin-top:10px;
-    font-size:14px;
-    color:#ffd54f;
-    line-height:1.6;
+.status-online .dot {
+    background-color: var(--online-color);
+    box-shadow: 0 0 10px var(--online-color);
 }
 
-/* FOOTER */
+.status-online {
+    color: var(--online-color);
+}
+
+.status-offline .dot {
+    background-color: var(--offline-color);
+    box-shadow: 0 0 10px var(--offline-color);
+}
+
+.status-offline {
+    color: var(--offline-color);
+}
+
+.details-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+    text-align: left;
+}
+
+.detail-item {
+    background: rgba(0,0,0,0.2);
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid var(--glass-border);
+}
+
+.detail-item label {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.detail-item span {
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+#playerList {
+    color: var(--primary);
+    word-break: break-word;
+}
+
+/* ==================== CENTERED SECTIONS ==================== */
+.center-box {
+    text-align: center;
+}
+
+/* ==================== FOOTER ==================== */
 footer{
-    text-align:center;
-    padding:30px;
-    color:#aaa;
-    background:rgba(0,0,0,0.35);
-    backdrop-filter:blur(10px);
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    border-top: 1px solid var(--glass-border);
+    background: rgba(10, 12, 16, 0.8);
+}
+
+/* ==================== RESPONSIVE DESIGN ==================== */
+@media (max-width: 768px) {
+    nav ul {
+        display: none; /* Can be toggled with JS if menu icon is added */
+    }
+    section {
+        padding: 60px 5%;
+    }
+    .glass-card {
+        padding: 25px;
+    }
 }
 </style>
 </head>
@@ -197,115 +343,117 @@ footer{
 <body>
 
 <nav>
-<div class="logo">🧀 CheeseWhiz SMP</div>
-
-<ul>
-<li><a href="#about">About</a></li>
-<li><a href="#features">Features</a></li>
-<li><a href="#status">Status</a></li>
-<li><a href="#join">Join</a></li>
-</ul>
+    <div class="logo">🧀 CheeseWhiz SMP</div>
+    <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#status">Status</a></li>
+        <li><a href="#join">Join</a></li>
+        <li><a href="#apply">Apply</a></li>
+    </ul>
 </nav>
 
 <section class="hero">
-<div>
-<h1>CHEESEWHIZ SMP</h1>
-<p>The ultimate survival Minecraft experience.</p>
-<a href="#status" class="btn">View Status</a>
-</div>
+    <div class="hero-content">
+        <h1>CHEESEWHIZ SMP</h1>
+        <p>The ultimate survival Minecraft experience. Built for community, creativity, and adventure.</p>
+        <a href="#status" class="btn">View Live Status</a>
+    </div>
 </section>
 
 <section id="about">
-<h2>About</h2>
-<div class="server-box">
-CheeseWhiz SMP is a community-driven survival server built around creativity, progression, and fun. Players can build, explore, trade, and take part in regular events that keep the world active and evolving. With support for both Java and Bedrock, it’s designed to be a place where anyone can join in and help shape the server as it grows.
-</div>
+    <h2>About <span>The Server</span></h2>
+    <div class="glass-card">
+        <p style="font-size: 1.1rem; color: var(--text-muted); text-align: center; max-width: 800px; margin: 0 auto;">
+            CheeseWhiz SMP is a community-driven survival server built around creativity, progression, and fun. Players can build, explore, trade, and take part in regular events that keep the world active and evolving. With support for both Java and Bedrock, it’s designed to be a place where anyone can join in and help shape the server as it grows.
+        </p>
+    </div>
 </section>
 
 <section id="features">
-<h2>Features</h2>
-
-<div class="cards">
-
-<div class="card">
-<h3>Survival</h3>
-<p>Enhanced vanilla gameplay.</p>
-</div>
-
-<div class="card">
-<h3>Events</h3>
-<p>Weekly server events.</p>
-</div>
-
-<div class="card">
-<h3>Java & Bedrock</h3>
-<p>Play from any platform.</p>
-</div>
-
-<div class="card">
-<h3>Community</h3>
-<p>Active and friendly players.</p>
-</div>
-
-</div>
+    <h2>Server <span>Features</span></h2>
+    <div class="cards">
+        <div class="card">
+            <h3>Survival</h3>
+            <p>Enhanced vanilla gameplay with quality-of-life additions.</p>
+        </div>
+        <div class="card">
+            <h3>Events</h3>
+            <p>Participate in exciting weekly server events and mini-games.</p>
+        </div>
+        <div class="card">
+            <h3>Java & Bedrock</h3>
+            <p>Cross-play enabled—join seamlessly from any platform.</p>
+        </div>
+        <div class="card">
+            <h3>Community</h3>
+            <p>An active, friendly, and welcoming player base.</p>
+        </div>
+    </div>
 </section>
 
 <section id="status">
-<h2>Server Status</h2>
+    <h2>Live <span>Status</span></h2>
+    <div class="glass-card server-box">
+        <h3>Server IP Address</h3>
+        <div class="ip-container">
+            <span class="ip">147.135.6.160:25785</span>
+        </div>
 
-<div class="server-box">
-
-<h3>Server IP</h3>
-<div class="ip">147.135.6.160:25785</div>
-
-<p style="margin-top:15px;">
-Version: 1.21.11+ • Java & Bedrock
-</p>
-
-<p style="margin-top:10px;">
-Status: <span id="statusText">Loading...</span>
-</p>
-
-<p>
-Players: <span id="playerCount">Loading...</span>
-</p>
-
-<p style="margin-top:10px;">Online Players:</p>
-<div id="playerList">Loading...</div>
-
-</div>
+        <div class="details-grid">
+            <div class="detail-item">
+                <label>Status</label>
+                <span id="statusBadge" class="status-badge status-offline">
+                    <span class="dot"></span>
+                    <span id="statusText">Checking...</span>
+                </span>
+            </div>
+            <div class="detail-item">
+                <label>Version</label>
+                <span>1.21.11+ (Java & Bedrock)</span>
+            </div>
+            <div class="detail-item">
+                <label>Players Online</label>
+                <span id="playerCount">Loading...</span>
+            </div>
+            <div class="detail-item">
+                <label>Online Players</label>
+                <div id="playerList">Loading...</div>
+            </div>
+        </div>
+    </div>
 </section>
 
 <section id="join">
-<h2>Join</h2>
-
-<div class="server-box">
-<p>Join our Discord community</p>
-
-<a class="btn" href="https://discord.gg/Hv4NvYDN3x" target="_blank">
-Join Discord
-</a>
-</div>
+    <h2>Join Our <span>Community</span></h2>
+    <div class="glass-card center-box">
+        <p style="color: var(--text-muted); margin-bottom: 25px; font-size: 1.1rem;">
+            Stay connected, get updates, and chat with other members on Discord.
+        </p>
+        <a class="btn" href="https://discord.gg/Hv4NvYDN3x" target="_blank">Join Discord</a>
+    </div>
 </section>
-    
+
 <section id="apply">
-  <h2>Staff Applications</h2>
-
-  <a class="btn"
-     href="https://www.cognitoforms.com/ItzburntCheese/MinecraftSMPStaffApplication"
-     target="_blank">
-     Apply for Staff
-  </a>
-
+    <h2>Become <span>Staff</span></h2>
+    <div class="glass-card center-box">
+        <p style="color: var(--text-muted); margin-bottom: 25px; font-size: 1.1rem;">
+            Interested in helping moderate and grow CheeseWhiz SMP? Submit an application today!
+        </p>
+        <a class="btn" href="https://www.cognitoforms.com/ItzburntCheese/MinecraftSMPStaffApplication" target="_blank">
+            Apply for Staff
+        </a>
+    </div>
 </section>
 
 <footer>
-© 2026 CheeseWhiz SMP
+    © 2026 CheeseWhiz SMP • All Rights Reserved
 </footer>
 
 <script>
 async function fetchServerStatus() {
     const serverIP = "147.135.6.160:25785";
+    const statusBadge = document.getElementById('statusBadge');
     const statusTextEl = document.getElementById('statusText');
     const playerCountEl = document.getElementById('playerCount');
     const playerListEl = document.getElementById('playerList');
@@ -315,8 +463,8 @@ async function fetchServerStatus() {
         const data = await response.json();
 
         if (data.online) {
+            statusBadge.className = "status-badge status-online";
             statusTextEl.textContent = "Online";
-            statusTextEl.className = "status-online";
             
             playerCountEl.textContent = `${data.players.online} / ${data.players.max}`;
 
@@ -326,20 +474,20 @@ async function fetchServerStatus() {
                 playerListEl.textContent = "No players currently online.";
             }
         } else {
+            statusBadge.className = "status-badge status-offline";
             statusTextEl.textContent = "Offline";
-            statusTextEl.className = "status-offline";
             playerCountEl.textContent = "0";
             playerListEl.textContent = "Server is currently offline.";
         }
     } catch (error) {
-        statusTextEl.textContent = "Error loading status";
-        statusTextEl.className = "status-offline";
+        statusBadge.className = "status-badge status-offline";
+        statusTextEl.textContent = "Error";
         playerCountEl.textContent = "N/A";
         playerListEl.textContent = "Could not fetch server data.";
     }
 }
 
-// Fetch on load
+// Fetch status on load
 fetchServerStatus();
 </script>
 
