@@ -19,7 +19,7 @@ html{
     scroll-behavior:smooth;
 }
 
-/* ✅ FIX: GLOBAL BACKGROUND (THIS SOLVES WHITE SCREEN) */
+/* ✅ GLOBAL BACKGROUND */
 body{
     color:#fff;
     overflow-x:hidden;
@@ -70,7 +70,7 @@ nav a:hover{
     color:#ffd54f;
 }
 
-/* HERO (NO SEPARATE BACKGROUND) */
+/* HERO */
 .hero{
     height:100vh;
     display:flex;
@@ -207,7 +207,6 @@ footer{
 </ul>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
 <div>
 <h1>CHEESEWHIZ SMP</h1>
@@ -216,7 +215,6 @@ footer{
 </div>
 </section>
 
-<!-- ABOUT -->
 <section id="about">
 <h2>About</h2>
 <div class="server-box">
@@ -224,7 +222,6 @@ CheeseWhiz SMP is a community-driven survival server built around creativity, pr
 </div>
 </section>
 
-<!-- FEATURES -->
 <section id="features">
 <h2>Features</h2>
 
@@ -253,7 +250,6 @@ CheeseWhiz SMP is a community-driven survival server built around creativity, pr
 </div>
 </section>
 
-<!-- STATUS -->
 <section id="status">
 <h2>Server Status</h2>
 
@@ -280,7 +276,6 @@ Players: <span id="playerCount">Loading...</span>
 </div>
 </section>
 
-<!-- JOIN -->
 <section id="join">
 <h2>Join</h2>
 
@@ -308,3 +303,45 @@ Join Discord
 © 2026 CheeseWhiz SMP
 </footer>
 
+<script>
+async function fetchServerStatus() {
+    const serverIP = "147.135.6.160:25785";
+    const statusTextEl = document.getElementById('statusText');
+    const playerCountEl = document.getElementById('playerCount');
+    const playerListEl = document.getElementById('playerList');
+
+    try {
+        const response = await fetch(`https://api.mcsrvstat.us/3/${serverIP}`);
+        const data = await response.json();
+
+        if (data.online) {
+            statusTextEl.textContent = "Online";
+            statusTextEl.className = "status-online";
+            
+            playerCountEl.textContent = `${data.players.online} / ${data.players.max}`;
+
+            if (data.players.list && data.players.list.length > 0) {
+                playerListEl.textContent = data.players.list.join(", ");
+            } else {
+                playerListEl.textContent = "No players currently online.";
+            }
+        } else {
+            statusTextEl.textContent = "Offline";
+            statusTextEl.className = "status-offline";
+            playerCountEl.textContent = "0";
+            playerListEl.textContent = "Server is currently offline.";
+        }
+    } catch (error) {
+        statusTextEl.textContent = "Error loading status";
+        statusTextEl.className = "status-offline";
+        playerCountEl.textContent = "N/A";
+        playerListEl.textContent = "Could not fetch server data.";
+    }
+}
+
+// Fetch on load
+fetchServerStatus();
+</script>
+
+</body>
+</html>
