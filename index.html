@@ -112,12 +112,17 @@ nav a:hover{
     box-shadow: 0 4px 20px var(--primary-glow);
     border: none;
     cursor: pointer;
+    width: 100%;
 }
 
 .btn:hover{
     transform: translateY(-3px);
     background: var(--primary-hover);
     box-shadow: 0 8px 30px rgba(255, 213, 79, 0.5);
+}
+
+.btn-inline {
+    width: auto;
 }
 
 /* ==================== HERO SECTION ==================== */
@@ -217,6 +222,79 @@ h2 span{
     font-size: 0.95rem;
 }
 
+/* ==================== STORE CARDS ==================== */
+.store-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+}
+
+.store-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.store-card.featured {
+    border-color: var(--primary);
+    box-shadow: 0 0 25px var(--primary-glow);
+}
+
+.store-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--glass-hover-border);
+}
+
+.badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: var(--primary);
+    color: #000;
+    font-size: 0.75rem;
+    font-weight: 800;
+    padding: 4px 10px;
+    border-radius: 20px;
+    text-transform: uppercase;
+}
+
+.price {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin: 15px 0;
+}
+
+.perks-list {
+    list-style: none;
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+.perks-list li {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.perks-list li::before {
+    content: "✓";
+    color: var(--primary);
+    font-weight: bold;
+}
+
 /* ==================== SERVER STATUS ==================== */
 .server-box{
     text-align: center;
@@ -310,7 +388,6 @@ h2 span{
     word-break: break-word;
 }
 
-/* ==================== CENTERED SECTIONS ==================== */
 .center-box {
     text-align: center;
 }
@@ -325,10 +402,9 @@ footer{
     background: rgba(10, 12, 16, 0.8);
 }
 
-/* ==================== RESPONSIVE DESIGN ==================== */
 @media (max-width: 768px) {
     nav ul {
-        display: none; /* Can be toggled with JS if menu icon is added */
+        display: none;
     }
     section {
         padding: 60px 5%;
@@ -347,6 +423,7 @@ footer{
     <ul>
         <li><a href="#about">About</a></li>
         <li><a href="#features">Features</a></li>
+        <li><a href="#store">Store</a></li>
         <li><a href="#status">Status</a></li>
         <li><a href="#join">Join</a></li>
         <li><a href="#apply">Apply</a></li>
@@ -357,7 +434,7 @@ footer{
     <div class="hero-content">
         <h1>CHEESEWHIZ SMP</h1>
         <p>The ultimate survival Minecraft experience. Built for community, creativity, and adventure.</p>
-        <a href="#status" class="btn">View Live Status</a>
+        <a href="#store" class="btn btn-inline">Visit Store</a>
     </div>
 </section>
 
@@ -389,6 +466,56 @@ footer{
             <h3>Community</h3>
             <p>An active, friendly, and welcoming player base.</p>
         </div>
+    </div>
+</section>
+
+<section id="store">
+    <h2>Server <span>Store</span></h2>
+    <div class="store-grid">
+        
+        <div class="store-card">
+            <div>
+                <h3>VIP Rank</h3>
+                <div class="price">$4.99</div>
+                <ul class="perks-list">
+                    <li>VIP Colored Prefix</li>
+                    <li>Access to /fly in claims</li>
+                    <li>2x Set Homes</li>
+                    <li>Reserved Server Slot</li>
+                </ul>
+            </div>
+            <a href="#" target="_blank" class="btn">Buy Package</a>
+        </div>
+
+        <div class="store-card featured">
+            <span class="badge">Popular</span>
+            <div>
+                <h3>Cheese Lord Rank</h3>
+                <div class="price">$9.99</div>
+                <ul class="perks-list">
+                    <li>Exclusive Lord Title</li>
+                    <li>Access to /fly everywhere</li>
+                    <li>5x Set Homes</li>
+                    <li>Priority Event Access</li>
+                    <li>1x Free Weekly Crate Key</li>
+                </ul>
+            </div>
+            <a href="#" target="_blank" class="btn">Buy Package</a>
+        </div>
+
+        <div class="store-card">
+            <div>
+                <h3>Crate Key Bundle</h3>
+                <div class="price">$2.99</div>
+                <ul class="perks-list">
+                    <li>5x Event Crate Keys</li>
+                    <li>Chance to unlock rare items</li>
+                    <li>Supports server maintenance</li>
+                </ul>
+            </div>
+            <a href="#" target="_blank" class="btn">Buy Package</a>
+        </div>
+
     </div>
 </section>
 
@@ -430,7 +557,7 @@ footer{
         <p style="color: var(--text-muted); margin-bottom: 25px; font-size: 1.1rem;">
             Stay connected, get updates, and chat with other members on Discord.
         </p>
-        <a class="btn" href="https://discord.gg/Hv4NvYDN3x" target="_blank">Join Discord</a>
+        <a class="btn btn-inline" href="https://discord.gg/Hv4NvYDN3x" target="_blank">Join Discord</a>
     </div>
 </section>
 
@@ -440,7 +567,7 @@ footer{
         <p style="color: var(--text-muted); margin-bottom: 25px; font-size: 1.1rem;">
             Interested in helping moderate and grow CheeseWhiz SMP? Submit an application today!
         </p>
-        <a class="btn" href="https://www.cognitoforms.com/ItzburntCheese/MinecraftSMPStaffApplication" target="_blank">
+        <a class="btn btn-inline" href="https://www.cognitoforms.com/ItzburntCheese/MinecraftSMPStaffApplication" target="_blank">
             Apply for Staff
         </a>
     </div>
@@ -487,7 +614,6 @@ async function fetchServerStatus() {
     }
 }
 
-// Fetch status on load
 fetchServerStatus();
 </script>
 
