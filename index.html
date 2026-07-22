@@ -222,77 +222,29 @@ h2 span{
     font-size: 0.95rem;
 }
 
-/* ==================== STORE CARDS ==================== */
-.store-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 24px;
+/* ==================== STORE UNDER CONSTRUCTION ==================== */
+.store-box {
+    text-align: center;
+    padding: 60px 30px;
 }
 
-.store-card {
-    background: var(--glass-bg);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid var(--glass-border);
+.store-icon {
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+}
+
+.store-tag {
+    display: inline-block;
+    background: rgba(255, 213, 79, 0.15);
+    color: var(--primary);
+    border: 1px solid var(--primary-glow);
+    padding: 6px 16px;
     border-radius: 20px;
-    padding: 32px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.store-card.featured {
-    border-color: var(--primary);
-    box-shadow: 0 0 25px var(--primary-glow);
-}
-
-.store-card:hover {
-    transform: translateY(-8px);
-    border-color: var(--glass-hover-border);
-}
-
-.badge {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background: var(--primary);
-    color: #000;
-    font-size: 0.75rem;
-    font-weight: 800;
-    padding: 4px 10px;
-    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
     text-transform: uppercase;
-}
-
-.price {
-    font-size: 2rem;
-    font-weight: 800;
-    color: var(--primary);
-    margin: 15px 0;
-}
-
-.perks-list {
-    list-style: none;
-    margin-bottom: 25px;
-    text-align: left;
-}
-
-.perks-list li {
-    color: var(--text-muted);
-    font-size: 0.95rem;
-    margin-bottom: 8px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.perks-list li::before {
-    content: "✓";
-    color: var(--primary);
-    font-weight: bold;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
 }
 
 /* ==================== SERVER STATUS ==================== */
@@ -434,7 +386,7 @@ footer{
     <div class="hero-content">
         <h1>CHEESEWHIZ SMP</h1>
         <p>The ultimate survival Minecraft experience. Built for community, creativity, and adventure.</p>
-        <a href="#store" class="btn btn-inline">Visit Store</a>
+        <a href="#status" class="btn btn-inline">View Status</a>
     </div>
 </section>
 
@@ -471,51 +423,13 @@ footer{
 
 <section id="store">
     <h2>Server <span>Store</span></h2>
-    <div class="store-grid">
-        
-        <div class="store-card">
-            <div>
-                <h3>VIP Rank</h3>
-                <div class="price">$4.99</div>
-                <ul class="perks-list">
-                    <li>VIP Colored Prefix</li>
-                    <li>Access to /fly in claims</li>
-                    <li>2x Set Homes</li>
-                    <li>Reserved Server Slot</li>
-                </ul>
-            </div>
-            <a href="#" target="_blank" class="btn">Buy Package</a>
-        </div>
-
-        <div class="store-card featured">
-            <span class="badge">Popular</span>
-            <div>
-                <h3>Cheese Lord Rank</h3>
-                <div class="price">$9.99</div>
-                <ul class="perks-list">
-                    <li>Exclusive Lord Title</li>
-                    <li>Access to /fly everywhere</li>
-                    <li>5x Set Homes</li>
-                    <li>Priority Event Access</li>
-                    <li>1x Free Weekly Crate Key</li>
-                </ul>
-            </div>
-            <a href="#" target="_blank" class="btn">Buy Package</a>
-        </div>
-
-        <div class="store-card">
-            <div>
-                <h3>Crate Key Bundle</h3>
-                <div class="price">$2.99</div>
-                <ul class="perks-list">
-                    <li>5x Event Crate Keys</li>
-                    <li>Chance to unlock rare items</li>
-                    <li>Supports server maintenance</li>
-                </ul>
-            </div>
-            <a href="#" target="_blank" class="btn">Buy Package</a>
-        </div>
-
+    <div class="glass-card store-box">
+        <div class="store-icon">🚧</div>
+        <span class="store-tag">Under Construction</span>
+        <h3 style="font-size: 1.8rem; color: var(--primary); margin-bottom: 10px;">Store Is Currently Under Work</h3>
+        <p style="color: var(--text-muted); max-width: 500px; margin: 0 auto;">
+            We are working hard to bring you exciting ranks, perks, and packages! Check back soon or join our Discord for updates.
+        </p>
     </div>
 </section>
 
